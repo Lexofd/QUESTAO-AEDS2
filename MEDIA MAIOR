@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define TAM 2
+
+void leiaNotas(float valores[], int tamanho) {
+    int i;
+    for(i=0; i<tamanho; i++)
+        scanf("%f", &valores[i]);
+}
+
+float calculaMedia(float valores[], int tamanho) {
+    float soma=0;
+    int i;
+    for(i=0; i<tamanho; i++)
+        soma = soma + valores[i];
+    return soma / tamanho;
+}
+
+void mediasSuperiores(float valores[], float media, int tamanho) {
+    int i;
+    for(i=0; i<tamanho; i++)
+        if(valores[i]>=media) printf("Nota[%d]=%f maior ou igual a media\n", i, valores[i]);
+}
+
+void leiaReal(float val) {
+    scanf("%f", &val);
+}
+
+int main() {
+    float notas[TAM];
+    float umValor;
+    leiaReal(umValor);
+    printf("Real lido foi %f\n", umValor);
+    leiaNotas(notas, TAM);    // Leitura
+    mediasSuperiores(notas, calculaMedia(notas, TAM), TAM);    // Notas >= media
+    return 0;
+}
